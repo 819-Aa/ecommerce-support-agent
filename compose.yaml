@@ -1,0 +1,191 @@
+services:
+  mysql:
+    image: mysql:8.4.10
+    ports:
+      - "127.0.0.1:${MYSQL_EXPOSED_PORT:-3306}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-support_root_dev_password}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-ecommerce_support}
+      MYSQL_USER: ${MYSQL_USER:-support_app}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-support_dev_password}
+      TZ: Asia/Shanghai
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_0900_ai_ci
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "mysqladmin ping -h 127.0.0.1 -u root -p$${MYSQL_ROOT_PASSWORD} --silent",
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+    restart: unless-stopped
+
+  mysql_loader:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.service
+    command:
+      [
+        "python",
+        "scripts/migrate_sqlite_to_mysql.py",
+        "--source",
+        "/import/olist_support.db",
+      ]
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-ecommerce_support}
+      MYSQL_USER: ${MYSQL_USER:-support_app}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-support_dev_password}
+    volumes:
+      - ./data/olist_support.db:/import/olist_support.db:ro
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: "no"
+
+  db_browser:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.app
+    command:
+      [
+        "streamlit",
+        "run",
+        "mysql_browser.py",
+        "--server.address=0.0.0.0",
+        "--server.port=8081",
+      ]
+    init: true
+    ports:
+      - "127.0.0.1:8081:8081"
+    environment:
+      AGENT_URL: http://agent_service:8080
+    depends_on:
+      agent_service:
+        condition: service_healthy
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8081/_stcore/health', timeout=3)",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+    restart: unless-stopped
+
+  agent_service:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.service
+    init: true
+    ports:
+      - "127.0.0.1:8080:8080"
+    env_file:
+      - .env
+    environment:
+      HOST: 0.0.0.0
+      PORT: 8080
+      BUSINESS_DATABASE_TYPE: mysql
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-ecommerce_support}
+      MYSQL_USER: ${MYSQL_USER:-support_app}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-support_dev_password}
+      DATABASE_TYPE: sqlite
+      SQLITE_DB_PATH: /app/runtime/checkpoints.db
+    volumes:
+      - agent_runtime:/app/runtime
+      - rag_chroma:/app/data/chroma
+      - embedding_models:/app/data/models
+    depends_on:
+      mysql:
+        condition: service_healthy
+      mysql_loader:
+        condition: service_completed_successfully
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/ready', timeout=3)",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 60s
+    restart: unless-stopped
+    develop:
+      watch:
+        - path: src/agents/
+          action: sync+restart
+          target: /app/agents/
+        - path: src/customer_support/
+          action: sync+restart
+          target: /app/customer_support/
+        - path: src/schema/
+          action: sync+restart
+          target: /app/schema/
+        - path: src/service/
+          action: sync+restart
+          target: /app/service/
+        - path: src/core/
+          action: sync+restart
+          target: /app/core/
+        - path: src/memory/
+          action: sync+restart
+          target: /app/memory/
+
+  streamlit_app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.app
+    init: true
+    ports:
+      - "127.0.0.1:8501:8501"
+    environment:
+      AGENT_URL: http://agent_service:8080
+    depends_on:
+      agent_service:
+        condition: service_healthy
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8501/_stcore/health', timeout=3)",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+    restart: unless-stopped
+    develop:
+      watch:
+        - path: src/client/
+          action: sync+restart
+          target: /app/client/
+        - path: src/schema/
+          action: sync+restart
+          target: /app/schema/
+        - path: src/streamlit_app.py
+          action: sync+restart
+          target: /app/streamlit_app.py
+
+volumes:
+  mysql_data:
+  agent_runtime:
+  rag_chroma:
+  embedding_models:

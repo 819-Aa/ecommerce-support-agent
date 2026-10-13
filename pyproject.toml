@@ -1,0 +1,114 @@
+[project]
+name = "agent-service-toolkit"
+version = "0.1.0"
+description = "Ecommerce support agent with policy RAG, verified order tools and human-approved tickets"
+readme = "README.md"
+authors = [{ name = "Joshua Carroll", email = "carroll.joshk@gmail.com" }]
+maintainers = [{ name = "819-Aa" }]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: MIT License",
+    "Framework :: FastAPI",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
+
+requires-python = ">=3.12,<3.15"
+
+dependencies = [
+    "aiosqlite >=0.20",
+    "docx2txt ~=0.8",
+    "duckduckgo-search>=8.1.1",
+    "fastapi ~=0.138.2",
+    "httpx ~=0.28.1",
+    "jiter ~=0.16.0",
+    "langchain ~=1.3.11",
+    "langchain-core ~=1.4.8",
+    "langchain-community ~=0.4.2",
+    "langchain-anthropic ~=1.4.8",
+    "langchain-aws ~=1.6.1",
+    "langchain-chroma ~=1.1.0",
+    "langchain-google-genai ~=4.2.6",
+    "langchain-google-vertexai>=3.2.4",
+    "langchain-groq ~=1.1.3",
+    "langchain-ollama ~=1.1.0",
+    "langchain-openai ~=1.3.3",
+    "langfuse ~=4.12",
+    "langgraph ~=1.2.7",
+    "langgraph-checkpoint-mongodb ~=0.4.0",
+    "langgraph-checkpoint-postgres ~=3.1.0",
+    "langgraph-checkpoint-sqlite ~=3.1.0",
+    "langgraph-supervisor ~=0.0.31",
+    "langsmith ~=0.9.4",
+    "numexpr ~=2.14.1",
+    "numpy ~=2.5.0",
+    "onnxruntime ~= 1.27.0",
+    "pandas ~=3.0.3",
+    "psycopg[binary,pool] ~=3.3.4",
+    "pyarrow >=23.0.1",
+    "pydantic ~=2.13.4",
+    "pydantic-settings ~=2.14.2",
+    "pypdf ~=6.14.2",
+    "pyowm ~=3.5.0",
+    "pymysql ~=1.1.2",
+    "python-dotenv ~=1.2.2",
+    "setuptools ~=82.0.1",
+    "streamlit ~=1.58.0",
+    "tiktoken >=0.13.0",
+    "uvicorn ~=0.49.0",
+    "langchain-mcp-adapters>=0.3.0",
+    "ddgs>=9.14.4",
+    "fastembed>=0.8.0",
+]
+
+[dependency-groups]
+dev = [
+    "langgraph-cli[inmem]",
+    "pre-commit",
+    "pytest",
+    "pytest-cov",
+    "pytest-env",
+    "pytest-asyncio",
+    "ruff",
+    "mypy ~=2.1.0",
+]
+
+# Group for the minimal dependencies to run just the client and Streamlit app.
+# These are also installed in the default dependencies.
+# To install run: `uv sync --frozen --only-group client`
+client = [
+    "httpx~=0.28.1",
+    "pydantic ~=2.13.4",
+    "python-dotenv ~=1.2.2",
+    "streamlit~=1.58.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+extend-select = ["I", "U"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.pytest_env]
+OPENAI_API_KEY = "sk-fake-openai-key"
+CUSTOMER_SUPPORT_MODE = "mock"
+RAG_EMBEDDING_PROVIDER = "local"
+RAG_RERANK_ENABLED = "false"
+
+[tool.mypy]
+plugins = "pydantic.mypy"
+exclude = "src/streamlit_app.py"
+
+[[tool.mypy.overrides]]
+module = ["numexpr.*"]
+follow_untyped_imports = true
+
+[[tool.mypy.overrides]]
+module = ["langchain_mcp_adapters.*"]
+ignore_missing_imports = true

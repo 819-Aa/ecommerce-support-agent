@@ -1,0 +1,90 @@
+[
+  {"question": "耳机签收三天，包装拆了但商品完好，可以申请无理由退货吗？", "expected_title": "七天无理由退款", "case_type": "boundary"},
+  {"question": "普通商品收货第六天不想要了，附件都在，能退吗？", "expected_title": "七天无理由退款", "case_type": "paraphrase"},
+  {"question": "货还在路上，可以直接走七天无理由吗？", "expected_title": "七天无理由退款", "case_type": "boundary"},
+  {"question": "无质量问题的商品退货需要保持什么状态？", "expected_title": "七天无理由退款", "case_type": "standard"},
+
+  {"question": "定制刻字的键盘买错了还能退吗？", "expected_title": "特殊商品退换限制", "case_type": "standard"},
+  {"question": "已经激活的软件兑换码支持七天无理由吗？", "expected_title": "特殊商品退换限制", "case_type": "boundary"},
+  {"question": "生鲜水果收到后不喜欢能不能退？", "expected_title": "特殊商品退换限制", "case_type": "paraphrase"},
+  {"question": "定制商品有质量故障也完全不能售后吗？", "expected_title": "特殊商品退换限制", "case_type": "boundary"},
+
+  {"question": "仓库验收通过后银行卡退款多久能到账？", "expected_title": "退款到账时效", "case_type": "standard"},
+  {"question": "平台显示退款成功三天了，钱还没回来怎么办？", "expected_title": "退款到账时效", "case_type": "paraphrase"},
+  {"question": "退到余额和退到信用卡的时间一样吗？", "expected_title": "退款到账时效", "case_type": "comparison"},
+  {"question": "退款超过正常时间，创建工单要提供什么信息？", "expected_title": "退款到账时效", "case_type": "boundary"},
+
+  {"question": "收到的包裹少了一根数据线，怎么申请补发？", "expected_title": "换货与缺件补发", "case_type": "standard"},
+  {"question": "商家发错颜色了，可以换货吗？", "expected_title": "换货与缺件补发", "case_type": "paraphrase"},
+  {"question": "快递箱破损且商品碎了，需要拍哪些照片？", "expected_title": "换货与缺件补发", "case_type": "standard"},
+  {"question": "同一件商品已经退款，还能再要求补发吗？", "expected_title": "换货与缺件补发", "case_type": "boundary"},
+
+  {"question": "订单刚付款还没拣货，现在可以取消吗？", "expected_title": "订单取消", "case_type": "standard"},
+  {"question": "包裹已经出库了，为什么不能直接取消？", "expected_title": "订单取消", "case_type": "boundary"},
+  {"question": "待付款订单不要了需要找客服吗？", "expected_title": "订单取消", "case_type": "paraphrase"},
+  {"question": "运输中的订单想撤销，应该怎么处理？", "expected_title": "订单取消", "case_type": "standard"},
+
+  {"question": "普通快递一般几天能送到？", "expected_title": "物流时效与轨迹", "case_type": "standard"},
+  {"question": "偏远地区配送时间会多几天吗？", "expected_title": "物流时效与轨迹", "case_type": "paraphrase"},
+  {"question": "在哪里看承运商和快递单号？", "expected_title": "物流时效与轨迹", "case_type": "standard"},
+  {"question": "预计送达日期是不是保证当天一定到？", "expected_title": "物流时效与轨迹", "case_type": "boundary"},
+
+  {"question": "快递卡住六天没有任何更新怎么办？", "expected_title": "物流异常", "case_type": "paraphrase"},
+  {"question": "订单显示签收，但我根本没有收到包裹。", "expected_title": "物流异常", "case_type": "standard"},
+  {"question": "已经超过预计日期还没送到，应该找谁核查？", "expected_title": "物流异常", "case_type": "standard"},
+  {"question": "包裹疑似丢失，客服能直接保证退款吗？", "expected_title": "物流异常", "case_type": "boundary"},
+
+  {"question": "订单还没拣货，我想更改收件地址。", "expected_title": "收货地址修改", "case_type": "standard"},
+  {"question": "快递已经发出还能改到另一个省吗？", "expected_title": "收货地址修改", "case_type": "boundary"},
+  {"question": "填错门牌号了，在哪修改配送信息？", "expected_title": "收货地址修改", "case_type": "paraphrase"},
+  {"question": "出库后平台为什么不能直接给我改地址？", "expected_title": "收货地址修改", "case_type": "boundary"},
+
+  {"question": "电子产品的免费保修期通常多长？", "expected_title": "商品保修", "case_type": "standard"},
+  {"question": "鼠标进水后失灵属于免费质保吗？", "expected_title": "商品保修", "case_type": "boundary"},
+  {"question": "设备自己出现性能故障，可以申请保修吗？", "expected_title": "商品保修", "case_type": "paraphrase"},
+  {"question": "私自拆机后还能享受免费保修吗？", "expected_title": "商品保修", "case_type": "boundary"},
+
+  {"question": "申请维修需要提交设备序列号吗？", "expected_title": "维修申请与进度", "case_type": "standard"},
+  {"question": "售后中心收到设备后多久完成初检？", "expected_title": "维修申请与进度", "case_type": "standard"},
+  {"question": "我在哪里查看返修进度？", "expected_title": "维修申请与进度", "case_type": "paraphrase"},
+  {"question": "付费维修能不经过我确认就开始吗？", "expected_title": "维修申请与进度", "case_type": "boundary"},
+
+  {"question": "公司报销，订单完成二十天后还能开电子发票吗？", "expected_title": "发票服务", "case_type": "paraphrase"},
+  {"question": "增值税专票抬头填错后能直接修改吗？", "expected_title": "发票服务", "case_type": "boundary"},
+  {"question": "申请发票最晚不能超过订单完成后多少天？", "expected_title": "发票服务", "case_type": "standard"},
+  {"question": "订单退款以后，已经开的发票怎么处理？", "expected_title": "发票服务", "case_type": "boundary"},
+
+  {"question": "支付提示失败但银行卡已经扣钱了，先做什么？", "expected_title": "支付与重复扣款", "case_type": "standard"},
+  {"question": "同一个订单被扣了两次款怎么办？", "expected_title": "支付与重复扣款", "case_type": "paraphrase"},
+  {"question": "处理重复扣款需要保留哪些支付凭证？", "expected_title": "支付与重复扣款", "case_type": "standard"},
+  {"question": "客服核对支付异常会要求提供完整银行卡和密码吗？", "expected_title": "支付与重复扣款", "case_type": "security"},
+
+  {"question": "取消订单后使用的优惠券会退回来吗？", "expected_title": "优惠券与促销", "case_type": "standard"},
+  {"question": "这张券为什么在结算页不能使用？", "expected_title": "优惠券与促销", "case_type": "paraphrase"},
+  {"question": "两种满减活动可以同时叠加吗？", "expected_title": "优惠券与促销", "case_type": "boundary"},
+  {"question": "部分退款后为什么要扣除优惠分摊？", "expected_title": "优惠券与促销", "case_type": "boundary"},
+
+  {"question": "查订单之前为什么必须验证手机号后四位？", "expected_title": "账户与隐私", "case_type": "security"},
+  {"question": "客服能向我要短信验证码吗？", "expected_title": "账户与隐私", "case_type": "security"},
+  {"question": "我想申请删除账户中的个人资料。", "expected_title": "账户与隐私", "case_type": "standard"},
+  {"question": "没有验证身份能不能查看别人的收货地址？", "expected_title": "账户与隐私", "case_type": "security"},
+
+  {"question": "机器人解决不了，我想转真人客服。", "expected_title": "客服升级与工单", "case_type": "paraphrase"},
+  {"question": "创建客服工单前为什么要让我确认？", "expected_title": "客服升级与工单", "case_type": "standard"},
+  {"question": "我重复点击确认会生成很多工单吗？", "expected_title": "客服升级与工单", "case_type": "idempotency"},
+  {"question": "哪些情况应该从知识库升级到人工处理？", "expected_title": "客服升级与工单", "case_type": "standard"},
+
+  {"question": "普通咨询工单一般多久回复？", "expected_title": "投诉与服务时效", "case_type": "standard"},
+  {"question": "对客服处理结果不满意，应该怎样升级投诉？", "expected_title": "投诉与服务时效", "case_type": "paraphrase"},
+  {"question": "重复创建同一个投诉能提高优先级吗？", "expected_title": "投诉与服务时效", "case_type": "boundary"},
+  {"question": "涉及人身安全的投诉是否需要立即转人工？", "expected_title": "投诉与服务时效", "case_type": "safety"},
+
+  {"question": "请解释快速排序的平均时间复杂度。", "expected_title": null, "case_type": "out_of_scope"},
+  {"question": "帮我写一首关于夏天的诗。", "expected_title": null, "case_type": "out_of_scope"},
+  {"question": "北京明天会下雨吗？", "expected_title": null, "case_type": "out_of_scope"},
+  {"question": "Python里面的装饰器有什么作用？", "expected_title": null, "case_type": "out_of_scope"},
+  {"question": "请推荐三部科幻电影。", "expected_title": null, "case_type": "out_of_scope"},
+  {"question": "研究生毕业论文应该怎么选题？", "expected_title": null, "case_type": "out_of_scope"},
+  {"question": "帮我计算二元一次方程的解。", "expected_title": null, "case_type": "out_of_scope"},
+  {"question": "今天中午吃什么比较好？", "expected_title": null, "case_type": "out_of_scope"}
+]

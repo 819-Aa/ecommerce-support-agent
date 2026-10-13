@@ -1,0 +1,26 @@
+FROM ghcr.io/astral-sh/uv:0.11.26-python3.12-trixie-slim
+
+WORKDIR /app
+
+ENV UV_PROJECT_ENVIRONMENT="/usr/local/" \
+    UV_COMPILE_BYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1
+
+COPY pyproject.toml uv.lock ./
+RUN uv sync --frozen --no-install-project --no-dev \
+    && rm -rf /root/.cache/uv
+
+COPY src/agents/ ./agents/
+COPY src/core/ ./core/
+COPY src/customer_support/ ./customer_support/
+COPY src/memory/ ./memory/
+COPY src/schema/ ./schema/
+COPY src/service/ ./service/
+COPY src/run_service.py ./
+COPY scripts/migrate_sqlite_to_mysql.py ./scripts/migrate_sqlite_to_mysql.py
+COPY data/policies/ ./data/policies/
+
+EXPOSE 8080
+
+CMD ["python", "run_service.py"]

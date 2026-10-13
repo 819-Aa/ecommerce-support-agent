@@ -1,0 +1,31 @@
+{
+  "case_count": 34,
+  "passed": 34,
+  "pass_rate": 1.0,
+  "sections": {
+    "routing": {
+      "case_count": 24,
+      "passed": 24,
+      "accuracy": 1.0,
+      "errors": []
+    },
+    "business_rules": {
+      "case_count": 4,
+      "passed": 4,
+      "accuracy": 1.0,
+      "errors": []
+    },
+    "security": {
+      "case_count": 3,
+      "passed": 3,
+      "accuracy": 1.0,
+      "errors": []
+    },
+    "idempotency": {
+      "case_count": 3,
+      "passed": 3,
+      "accuracy": 1.0,
+      "errors": []
+    }
+  }
+}

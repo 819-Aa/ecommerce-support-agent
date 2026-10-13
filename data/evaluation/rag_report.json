@@ -1,0 +1,531 @@
+[
+  {
+    "method": "lexical",
+    "case_count": 72,
+    "positive_count": 64,
+    "negative_count": 8,
+    "hit_at_1": 0.875,
+    "hit_at_3": 0.9688,
+    "mrr_at_3": 0.9167,
+    "rejection_accuracy": 0.75,
+    "overall_accuracy": 0.8611,
+    "average_latency_ms": 3.02,
+    "p50_latency_ms": 2.87,
+    "p95_latency_ms": 3.99,
+    "errors": [
+      {
+        "question": "无质量问题的商品退货需要保持什么状态？",
+        "expected": "七天无理由退款",
+        "predicted": [
+          "特殊商品退换限制",
+          "换货与缺件补发",
+          "七天无理由退款"
+        ],
+        "case_type": "standard",
+        "correct": false,
+        "top_hit": {
+          "title": "特殊商品退换限制",
+          "content": "定制商品、鲜活易腐商品、下载或激活后的数字商品、拆封后影响健康安全的贴身用品不适用七天无理由退货。商品存在质量问题时不受无理由退货范围限制，应提交故障照片、检测结果或其他证明，按质量售后流程处理。",
+          "source": "data/policies/customer_service_policy.md",
+          "chunk_id": "abcbbcd08688be6f",
+          "score": 0.0909,
+          "dense_rank": null,
+          "dense_relevance": null,
+          "lexical_rank": 1,
+          "lexical_score": 0.3529
+        }
+      },
+      {
+        "question": "已经激活的软件兑换码支持七天无理由吗？",
+        "expected": "特殊商品退换限制",
+        "predicted": [
+          "七天无理由退款",
+          "特殊商品退换限制",
+          "换货与缺件补发"
+        ],
+        "case_type": "boundary",
+        "correct": false,
+        "top_hit": {
+          "title": "七天无理由退款",
+          "content": "标准商品自签收次日起 7 个自然日内，在商品完好、附件齐全且不影响二次销售的情况下，可以申请无理由退货。已拆封但不影响商品完好性的普通商品可提交审核；影响二次销售时不支持无理由退款。运输中的订单应先处理物流或取消订单，不能按已签收商品申请七天无理由退款。",
+          "source": "data/policies/customer_service_policy.md",
+          "chunk_id": "bd8b59686811edc9",
+          "score": 0.0909,
+          "dense_rank": null,
+          "dense_relevance": null,
+          "lexical_rank": 1,
+          "lexical_score": 0.2941
+        }
+      },
+      {
+        "question": "生鲜水果收到后不喜欢能不能退？",
+        "expected": "特殊商品退换限制",
+        "predicted": [
+          "物流异常",
+          "七天无理由退款",
+          "换货与缺件补发"
+        ],
+        "case_type": "paraphrase",
+        "correct": false,
+        "top_hit": {
+          "title": "物流异常",
+          "content": "订单运输中超过 5 天没有新轨迹、超过预计送达时间仍未签收、显示签收但本人未收到或包裹疑似丢失时，可以创建物流异常工单。客服会在 24 小时内联系承运商核查；核查完成前不能虚构包裹位置，也不直接承诺退款结果。",
+          "source": "data/policies/customer_service_policy.md",
+          "chunk_id": "3064c5de15dd2e68",
+          "score": 0.0909,
+          "dense_rank": null,
+          "dense_relevance": null,
+          "lexical_rank": 1,
+          "lexical_score": 0.1538
+        }
+      },
+      {
+        "question": "运输中的订单想撤销，应该怎么处理？",
+        "expected": "订单取消",
+        "predicted": [
+          "七天无理由退款",
+          "订单取消",
+          "物流异常"
+        ],
+        "case_type": "standard",
+        "correct": false,
+        "top_hit": {
+          "title": "七天无理由退款",
+          "content": "标准商品自签收次日起 7 个自然日内，在商品完好、附件齐全且不影响二次销售的情况下，可以申请无理由退货。已拆封但不影响商品完好性的普通商品可提交审核；影响二次销售时不支持无理由退款。运输中的订单应先处理物流或取消订单，不能按已签收商品申请七天无理由退款。",
+          "source": "data/policies/customer_service_policy.md",
+          "chunk_id": "bd8b59686811edc9",
+          "score": 0.0909,
+          "dense_rank": null,
+          "dense_relevance": null,
+          "lexical_rank": 1,
+          "lexical_score": 0.4286
+        }
+      },
+      {
+        "question": "快递已经发出还能改到另一个省吗？",
+        "expected": "收货地址修改",
+        "predicted": [
+          "换货与缺件补发",
+          "物流时效与轨迹",
+          "客服升级与工单"
+        ],
+        "case_type": "boundary",
+        "correct": false,
+        "top_hit": {
+          "title": "换货与缺件补发",
+          "content": "收到错发、漏发、破损或存在质量问题的商品时，用户应在签收后 48 小时内上传外包装、商品和快递面单照片。核验通过后可以选择换货或缺件补发；同一问题已经完成退款时，不再重复补发。换货商品发出后会生成新的物流单号。",
+          "source": "data/policies/customer_service_policy.md",
+          "chunk_id": "7559b4de6f76fc82",
+          "score": 0.0909,
+          "dense_rank": null,
+          "dense_relevance": null,
+          "lexical_rank": 1,
+          "lexical_score": 0.2143
+        }
+      },
+      {
+        "question": "我在哪里查看返修进度？",
+        "expected": "维修申请与进度",
+        "predicted": [
+          "物流时效与轨迹",
+          "维修申请与进度"
+        ],
+        "case_type": "paraphrase",
+        "correct": false,
+        "top_hit": {
+          "title": "物流时效与轨迹",
+          "content": "普通快递预计 3 至 5 个自然日送达，偏远地区可能增加 2 至 3 天。预计送达时间是基于仓库和承运商计算的参考时间，不等于承诺到达时间。订单发货后可以通过订单详情查看承运商、物流单号和最新轨迹。",
+          "source": "data/policies/customer_service_policy.md",
+          "chunk_id": "7f8f5424b754e7d7",
+          "score": 0.0909,
+          "dense_rank": null,
+          "dense_relevance": null,
+          "lexical_rank": 1,
+          "lexical_score": 0.1111
+        }
+      },
+      {
+        "question": "订单退款以后，已经开的发票怎么处理？",
+        "expected": "发票服务",
+        "predicted": [
+          "七天无理由退款",
+          "订单取消",
+          "发票服务"
+        ],
+        "case_type": "boundary",
+        "correct": false,
+        "top_hit": {
+          "title": "七天无理由退款",
+          "content": "标准商品自签收次日起 7 个自然日内，在商品完好、附件齐全且不影响二次销售的情况下，可以申请无理由退货。已拆封但不影响商品完好性的普通商品可提交审核；影响二次销售时不支持无理由退款。运输中的订单应先处理物流或取消订单，不能按已签收商品申请七天无理由退款。",
+          "source": "data/policies/customer_service_policy.md",
+          "chunk_id": "bd8b59686811edc9",
+          "score": 0.0909,
+          "dense_rank": null,
+          "dense_relevance": null,
+          "lexical_rank": 1,
+          "lexical_score": 0.2
+        }
+      },
+      {
+        "question": "我重复点击确认会生成很多工单吗？",
+        "expected": "客服升级与工单",
+        "predicted": [
+          "换货与缺件补发",
+          "客服升级与工单",
+          "支付与重复扣款"
+        ],
+        "case_type": "idempotency",
+        "correct": false,
+        "top_hit": {
+          "title": "换货与缺件补发",
+          "content": "收到错发、漏发、破损或存在质量问题的商品时，用户应在签收后 48 小时内上传外包装、商品和快递面单照片。核验通过后可以选择换货或缺件补发；同一问题已经完成退款时，不再重复补发。换货商品发出后会生成新的物流单号。",
+          "source": "data/policies/customer_service_policy.md",
+          "chunk_id": "7559b4de6f76fc82",
+          "score": 0.0909,
+          "dense_rank": null,
+          "dense_relevance": null,
+          "lexical_rank": 1,
+          "lexical_score": 0.2143
+        }
+      },
+      {
+        "question": "请解释快速排序的平均时间复杂度。",
+        "expected": null,
+        "predicted": [
+          "物流时效与轨迹",
+          "物流异常",
+          "投诉与服务时效"
+        ],
+        "case_type": "out_of_scope",
+        "correct": false,
+        "top_hit": {
+          "title": "物流时效与轨迹",
+          "content": "普通快递预计 3 至 5 个自然日送达，偏远地区可能增加 2 至 3 天。预计送达时间是基于仓库和承运商计算的参考时间，不等于承诺到达时间。订单发货后可以通过订单详情查看承运商、物流单号和最新轨迹。",
+          "source": "data/policies/customer_service_policy.md",
+          "chunk_id": "7f8f5424b754e7d7",
+          "score": 0.0909,
+          "dense_rank": null,
+          "dense_relevance": null,
+          "lexical_rank": 1,
+          "lexical_score": 0.0714
+        }
+      },
+      {
+        "question": "帮我计算二元一次方程的解。",
+        "expected": null,
+        "predicted": [
+          "物流时效与轨迹"
+        ],
+        "case_type": "out_of_scope",
+        "correct": false,
+        "top_hit": {
+          "title": "物流时效与轨迹",
+          "content": "普通快递预计 3 至 5 个自然日送达，偏远地区可能增加 2 至 3 天。预计送达时间是基于仓库和承运商计算的参考时间，不等于承诺到达时间。订单发货后可以通过订单详情查看承运商、物流单号和最新轨迹。",
+          "source": "data/policies/customer_service_policy.md",
+          "chunk_id": "7f8f5424b754e7d7",
+          "score": 0.0909,
+          "dense_rank": null,
+          "dense_relevance": null,
+          "lexical_rank": 1,
+          "lexical_score": 0.0909
+        }
+      }
+    ]
+  },
+  {
+    "method": "dense",
+    "case_count": 72,
+    "positive_count": 64,
+    "negative_count": 8,
+    "hit_at_1": 0.875,
+    "hit_at_3": 1.0,
+    "mrr_at_3": 0.9349,
+    "rejection_accuracy": 1.0,
+    "overall_accuracy": 0.8889,
+    "average_latency_ms": 10.8,
+    "p50_latency_ms": 10.59,
+    "p95_latency_ms": 13.09,
+    "errors": [
+      {
+        "question": "无质量问题的商品退货需要保持什么状态？",
+        "expected": "七天无理由退款",
+        "predicted": [
+          "特殊商品退换限制",
+          "七天无理由退款",
+          "换货与缺件补发"
+        ],
+        "case_type": "standard",
+        "correct": false,
+        "top_hit": {
+          "title": "特殊商品退换限制",
+          "content": "定制商品、鲜活易腐商品、下载或激活后的数字商品、拆封后影响健康安全的贴身用品不适用七天无理由退货。商品存在质量问题时不受无理由退货范围限制，应提交故障照片、检测结果或其他证明，按质量售后流程处理。",
+          "source": "data/policies/customer_service_policy.md",
+          "chunk_id": "abcbbcd08688be6f",
+          "score": 0.0909,
+          "dense_rank": 1,
+          "dense_relevance": 0.6902,
+          "lexical_rank": null,
+          "lexical_score": null
+        }
+      },
+      {
+        "question": "生鲜水果收到后不喜欢能不能退？",
+        "expected": "特殊商品退换限制",
+        "predicted": [
+          "七天无理由退款",
+          "特殊商品退换限制",
+          "订单取消"
+        ],
+        "case_type": "paraphrase",
+        "correct": false,
+        "top_hit": {
+          "title": "七天无理由退款",
+          "content": "标准商品自签收次日起 7 个自然日内，在商品完好、附件齐全且不影响二次销售的情况下，可以申请无理由退货。已拆封但不影响商品完好性的普通商品可提交审核；影响二次销售时不支持无理由退款。运输中的订单应先处理物流或取消订单，不能按已签收商品申请七天无理由退款。",
+          "source": "data/policies/customer_service_policy.md",
+          "chunk_id": "bd8b59686811edc9",
+          "score": 0.0909,
+          "dense_rank": 1,
+          "dense_relevance": 0.6023,
+          "lexical_rank": null,
+          "lexical_score": null
+        }
+      },
+      {
+        "question": "退款超过正常时间，创建工单要提供什么信息？",
+        "expected": "退款到账时效",
+        "predicted": [
+          "投诉与服务时效",
+          "退款到账时效",
+          "物流异常"
+        ],
+        "case_type": "boundary",
+        "correct": false,
+        "top_hit": {
+          "title": "投诉与服务时效",
+          "content": "普通咨询工单目标响应时间为 24 小时，物流、支付和退款异常工单目标响应时间为 12 小时。用户对处理结果有异议时可以在原工单中补充证据并申请升级，不应通过重复创建相同工单提高优先级。涉及威胁、人身安全或大规模资金风险时应立即升级人工处理。",
+          "source": "data/policies/customer_service_policy.md",
+          "chunk_id": "f2c834b5ac5a9c56",
+          "score": 0.0909,
+          "dense_rank": 1,
+          "dense_relevance": 0.662,
+          "lexical_rank": null,
+          "lexical_score": null
+        }
+      },
+      {
+        "question": "待付款订单不要了需要找客服吗？",
+        "expected": "订单取消",
+        "predicted": [
+          "账户与隐私",
+          "物流异常",
+          "订单取消"
+        ],
+        "case_type": "paraphrase",
+        "correct": false,
+        "top_hit": {
+          "title": "账户与隐私",
+          "content": "客服查询订单前必须验证订单号和手机号后四位，不得向未验证用户披露收货地址、完整手机号、支付账号等信息。客服不得索要密码、短信验证码或完整银行卡号。用户申请导出或删除账户信息时，需要通过专门的身份验证和隐私工单处理。",
+          "source": "data/policies/customer_service_policy.md",
+          "chunk_id": "88eebe63ee06d33e",
+          "score": 0.0909,
+          "dense_rank": 1,
+          "dense_relevance": 0.6753,
+          "lexical_rank": null,
+          "lexical_score": null
+        }
+      },
+      {
+        "question": "在哪里看承运商和快递单号？",
+        "expected": "物流时效与轨迹",
+        "predicted": [
+          "物流异常",
+          "物流时效与轨迹",
+          "收货地址修改"
+        ],
+        "case_type": "standard",
+        "correct": false,
+        "top_hit": {
+          "title": "物流异常",
+          "content": "订单运输中超过 5 天没有新轨迹、超过预计送达时间仍未签收、显示签收但本人未收到或包裹疑似丢失时，可以创建物流异常工单。客服会在 24 小时内联系承运商核查；核查完成前不能虚构包裹位置，也不直接承诺退款结果。",
+          "source": "data/policies/customer_service_policy.md",
+          "chunk_id": "3064c5de15dd2e68",
+          "score": 0.0909,
+          "dense_rank": 1,
+          "dense_relevance": 0.6061,
+          "lexical_rank": null,
+          "lexical_score": null
+        }
+      },
+      {
+        "question": "申请发票最晚不能超过订单完成后多少天？",
+        "expected": "发票服务",
+        "predicted": [
+          "物流异常",
+          "发票服务",
+          "七天无理由退款"
+        ],
+        "case_type": "standard",
+        "correct": false,
+        "top_hit": {
+          "title": "物流异常",
+          "content": "订单运输中超过 5 天没有新轨迹、超过预计送达时间仍未签收、显示签收但本人未收到或包裹疑似丢失时，可以创建物流异常工单。客服会在 24 小时内联系承运商核查；核查完成前不能虚构包裹位置，也不直接承诺退款结果。",
+          "source": "data/policies/customer_service_policy.md",
+          "chunk_id": "3064c5de15dd2e68",
+          "score": 0.0909,
+          "dense_rank": 1,
+          "dense_relevance": 0.6879,
+          "lexical_rank": null,
+          "lexical_score": null
+        }
+      },
+      {
+        "question": "对客服处理结果不满意，应该怎样升级投诉？",
+        "expected": "投诉与服务时效",
+        "predicted": [
+          "账户与隐私",
+          "投诉与服务时效",
+          "客服升级与工单"
+        ],
+        "case_type": "paraphrase",
+        "correct": false,
+        "top_hit": {
+          "title": "账户与隐私",
+          "content": "客服查询订单前必须验证订单号和手机号后四位，不得向未验证用户披露收货地址、完整手机号、支付账号等信息。客服不得索要密码、短信验证码或完整银行卡号。用户申请导出或删除账户信息时，需要通过专门的身份验证和隐私工单处理。",
+          "source": "data/policies/customer_service_policy.md",
+          "chunk_id": "88eebe63ee06d33e",
+          "score": 0.0909,
+          "dense_rank": 1,
+          "dense_relevance": 0.6127,
+          "lexical_rank": null,
+          "lexical_score": null
+        }
+      },
+      {
+        "question": "重复创建同一个投诉能提高优先级吗？",
+        "expected": "投诉与服务时效",
+        "predicted": [
+          "客服升级与工单",
+          "投诉与服务时效",
+          "支付与重复扣款"
+        ],
+        "case_type": "boundary",
+        "correct": false,
+        "top_hit": {
+          "title": "客服升级与工单",
+          "content": "知识库无法回答、物流异常、支付异常、需要人工审核或用户明确要求真人处理时，可以创建客服工单。创建工单属于写入操作，系统必须先获得用户明确确认；同一个幂等键只能创建一张工单，重复请求应返回原工单编号。",
+          "source": "data/policies/customer_service_policy.md",
+          "chunk_id": "3d44a7eb3ef303db",
+          "score": 0.0909,
+          "dense_rank": 1,
+          "dense_relevance": 0.5866,
+          "lexical_rank": null,
+          "lexical_score": null
+        }
+      }
+    ]
+  },
+  {
+    "method": "hybrid",
+    "case_count": 72,
+    "positive_count": 64,
+    "negative_count": 8,
+    "hit_at_1": 0.9375,
+    "hit_at_3": 1.0,
+    "mrr_at_3": 0.9661,
+    "rejection_accuracy": 1.0,
+    "overall_accuracy": 0.9444,
+    "average_latency_ms": 11.53,
+    "p50_latency_ms": 11.53,
+    "p95_latency_ms": 13.47,
+    "errors": [
+      {
+        "question": "无质量问题的商品退货需要保持什么状态？",
+        "expected": "七天无理由退款",
+        "predicted": [
+          "特殊商品退换限制",
+          "换货与缺件补发",
+          "七天无理由退款"
+        ],
+        "case_type": "standard",
+        "correct": false,
+        "top_hit": {
+          "title": "特殊商品退换限制",
+          "content": "定制商品、鲜活易腐商品、下载或激活后的数字商品、拆封后影响健康安全的贴身用品不适用七天无理由退货。商品存在质量问题时不受无理由退货范围限制，应提交故障照片、检测结果或其他证明，按质量售后流程处理。",
+          "source": "data/policies/customer_service_policy.md",
+          "chunk_id": "abcbbcd08688be6f",
+          "score": 0.1551,
+          "dense_rank": 1,
+          "dense_relevance": 0.6902,
+          "lexical_rank": 1,
+          "lexical_score": 0.3529
+        }
+      },
+      {
+        "question": "生鲜水果收到后不喜欢能不能退？",
+        "expected": "特殊商品退换限制",
+        "predicted": [
+          "七天无理由退款",
+          "特殊商品退换限制",
+          "收货地址修改"
+        ],
+        "case_type": "paraphrase",
+        "correct": false,
+        "top_hit": {
+          "title": "七天无理由退款",
+          "content": "标准商品自签收次日起 7 个自然日内，在商品完好、附件齐全且不影响二次销售的情况下，可以申请无理由退货。已拆封但不影响商品完好性的普通商品可提交审核；影响二次销售时不支持无理由退款。运输中的订单应先处理物流或取消订单，不能按已签收商品申请七天无理由退款。",
+          "source": "data/policies/customer_service_policy.md",
+          "chunk_id": "bd8b59686811edc9",
+          "score": 0.1037,
+          "dense_rank": 1,
+          "dense_relevance": 0.6023,
+          "lexical_rank": 2,
+          "lexical_score": 0.0769
+        }
+      },
+      {
+        "question": "运输中的订单想撤销，应该怎么处理？",
+        "expected": "订单取消",
+        "predicted": [
+          "七天无理由退款",
+          "订单取消",
+          "物流异常"
+        ],
+        "case_type": "standard",
+        "correct": false,
+        "top_hit": {
+          "title": "七天无理由退款",
+          "content": "标准商品自签收次日起 7 个自然日内，在商品完好、附件齐全且不影响二次销售的情况下，可以申请无理由退货。已拆封但不影响商品完好性的普通商品可提交审核；影响二次销售时不支持无理由退款。运输中的订单应先处理物流或取消订单，不能按已签收商品申请七天无理由退款。",
+          "source": "data/policies/customer_service_policy.md",
+          "chunk_id": "bd8b59686811edc9",
+          "score": 0.1494,
+          "dense_rank": 4,
+          "dense_relevance": 0.6449,
+          "lexical_rank": 1,
+          "lexical_score": 0.4286
+        }
+      },
+      {
+        "question": "快递已经发出还能改到另一个省吗？",
+        "expected": "收货地址修改",
+        "predicted": [
+          "换货与缺件补发",
+          "收货地址修改",
+          "物流时效与轨迹"
+        ],
+        "case_type": "boundary",
+        "correct": false,
+        "top_hit": {
+          "title": "换货与缺件补发",
+          "content": "收到错发、漏发、破损或存在质量问题的商品时，用户应在签收后 48 小时内上传外包装、商品和快递面单照片。核验通过后可以选择换货或缺件补发；同一问题已经完成退款时，不再重复补发。换货商品发出后会生成新的物流单号。",
+          "source": "data/policies/customer_service_policy.md",
+          "chunk_id": "7559b4de6f76fc82",
+          "score": 0.1223,
+          "dense_rank": 2,
+          "dense_relevance": 0.5804,
+          "lexical_rank": 1,
+          "lexical_score": 0.2143
+        }
+      }
+    ]
+  }
+]

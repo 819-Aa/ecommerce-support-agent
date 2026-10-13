@@ -1,0 +1,29 @@
+[
+  {"message": "七天无理由退款要满足哪些条件？", "expected_tool": "search_policy"},
+  {"message": "优惠券取消订单后多久退回？", "expected_tool": "search_policy"},
+  {"message": "支付失败但银行卡扣款了怎么办？", "expected_tool": "search_policy"},
+  {"message": "发票抬头写错了能修改吗？", "expected_tool": "search_policy"},
+  {"message": "电子产品进水还在保修范围吗？", "expected_tool": "search_policy"},
+  {"message": "出库后怎么修改收货地址？", "expected_tool": "search_policy"},
+  {"message": "客服会向我要短信验证码吗？", "expected_tool": "search_policy"},
+  {"message": "普通投诉工单多久响应？", "expected_tool": "search_policy"},
+
+  {"message": "查询订单 ORD1001，手机号后四位 8821", "expected_tool": "get_order_status"},
+  {"message": "OL099422 到哪了？手机号后四位 3623", "expected_tool": "get_order_status"},
+  {"message": "订单 ORD1002 状态，手机尾号 8821", "expected_tool": "get_order_status"},
+  {"message": "查一下 OL080724 是否延迟，手机号后四位 0347", "expected_tool": "get_order_status"},
+  {"message": "订单 ORD1001 的物流怎么样，手机号后四位 8821", "expected_tool": "get_order_status"},
+
+  {"message": "订单 ORD1002 能退款吗？手机号后四位 8821", "expected_tool": "check_refund_eligibility"},
+  {"message": "判断 OL080724 的退款资格，手机号后四位 0347", "expected_tool": "check_refund_eligibility"},
+  {"message": "ORD1003 可以退货吗，手机尾号 8821", "expected_tool": "check_refund_eligibility"},
+  {"message": "查 ORD1002 是否能退，手机号后四位 8821", "expected_tool": "check_refund_eligibility"},
+  {"message": "OL080724 申请退款符合条件吗？手机号后四位 0347", "expected_tool": "check_refund_eligibility"},
+
+  {"message": "你好", "expected_tool": null},
+  {"message": "我的东西有问题怎么办？", "expected_tool": null},
+  {"message": "查询订单 ORD1001", "expected_tool": null},
+  {"message": "手机号后四位 8821", "expected_tool": null},
+  {"message": "帮我处理一下", "expected_tool": null},
+  {"message": "订单怎么了？", "expected_tool": null}
+]
