@@ -1,4 +1,4 @@
-# DeepSeek + 硅基流动完整部署
+# DeepSeek-V4-Flash + BGE-M3 + BGE-Reranker-v2-M3 完整部署
 
 本配置使用真实匿名 Olist 订单、MySQL 和真实在线模型，不运行离线 Mock 演示。
 

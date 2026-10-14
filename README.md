@@ -3,7 +3,7 @@
 围绕电商售后，把自然语言对话接到可验证的业务工具上：政策问题检索知识库，订单问题
 查询 MySQL，退款资格交给规则判断，创建工单则必须经过用户确认。
 
-当前验证配置是 **DeepSeek + 硅基流动 BGE-M3 / BGE Reranker + LangGraph + FastAPI + MySQL**。
+当前验证配置是 **DeepSeek-V4-Flash + BGE-M3 + BGE-Reranker-v2-M3 + LangGraph + FastAPI + MySQL**。
 项目使用 Olist 公开匿名订单和项目构造的商城政策，适合本地学习、技术实验和作品展示。
 
 ## 先看一条业务闭环
@@ -28,7 +28,7 @@
 flowchart LR
     UI[Streamlit 对话页面] -->|HTTP / SSE| API[FastAPI]
     API --> Agent[LangGraph 客服 Agent]
-    Agent <--> LLM[DeepSeek / 硅基流动]
+    Agent <--> LLM[DeepSeek-V4-Flash]
     Agent --> Policy[政策检索工具]
     Policy --> Hybrid[词法与向量混合召回]
     Hybrid --> Chroma[Chroma 政策索引]
@@ -68,7 +68,7 @@ flowchart LR
 ### 政策检索对照
 
 评测集共 72 条问题：64 条相关问题和 8 条越界问题。嵌入使用 `BAAI/bge-m3`，重排使用
-`BAAI/bge-reranker-v2-m3`，均通过硅基流动 API 调用。
+`BAAI/bge-reranker-v2-m3`，均通过 API 调用。
 
 | 检索方式 | Hit@1 | Hit@3 | 越界拒答率 | P95 检索延迟 |
 | --- | ---: | ---: | ---: | ---: |
@@ -83,7 +83,7 @@ flowchart LR
 
 ## 在自己的电脑上复现
 
-准备 Python 3.12、uv、Docker Desktop，以及有可用额度的硅基流动账号。
+准备 Python 3.12、uv、Docker Desktop，以及上述模型的 API 访问权限和可用额度。
 仓库不包含真实密钥、Olist 原始 CSV、运行数据库或模型缓存。
 
 **安装依赖并准备配置：**
